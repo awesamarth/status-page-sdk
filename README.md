@@ -38,6 +38,16 @@ const summary = await status.getSummary();
 - `getIncident(id)` returns one incident or `null`.
 - `getSummary()` returns overall state, incident count, and services.
 
+## Environment configuration
+
+The demo dashboard uses mock data by default. To point it at a real status-page API, set the `STATUS_PAGE_BASE_URL` environment variable before running the app:
+
+```bash
+STATUS_PAGE_BASE_URL=https://status.example.com/api bun dev
+```
+
+When `STATUS_PAGE_BASE_URL` is set, the demo sends all client requests to that base URL instead of the built-in mock data. Leave it unset to continue using mock data.
+
 ## Development
 
 ```bash
