@@ -38,6 +38,19 @@ const summary = await status.getSummary();
 - `getIncident(id)` returns one incident or `null`.
 - `getSummary()` returns overall state, incident count, and services.
 
+## Troubleshooting mock data
+
+If the dashboard only shows mock status data, it means `createStatusClient` is falling back to the bundled mock transport because no `baseUrl` was provided. To target a real endpoint, pass `baseUrl` when creating the status client:
+
+```ts
+const status = createStatusClient({
+  baseUrl: "https://status.example.com/api",
+  apiKey: "your-api-key", // optional
+});
+```
+
+Omitting `baseUrl` causes the client to use the mock transport, so the dashboard will always display bundled demo data instead of live status information.
+
 ## Development
 
 ```bash
