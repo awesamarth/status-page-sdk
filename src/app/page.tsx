@@ -7,7 +7,9 @@ const stateStyles = {
 };
 
 export default async function Home() {
-  const client = createStatusClient();
+  const client = createStatusClient({
+    baseUrl: process.env.STATUS_PAGE_BASE_URL,
+  });
   const [summary, incidents] = await Promise.all([client.getSummary(), client.getIncidents()]);
 
   return (
